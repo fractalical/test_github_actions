@@ -4,10 +4,9 @@ from fastapi import Depends
 from sqlmodel import    Session, SQLModel, create_engine
 
 
-db_url = f"postgresql+asyncpg://postgres:postgres@localhost:5432/postgres"
+db_url = f"postgresql://postgres:postgres@course-postgres:5432/postgres"
 
-connect_args = {"check_same_thread": False}
-engine = create_engine(db_url, connect_args=connect_args)
+engine = create_engine(db_url)
 
 
 def create_db_and_tables():

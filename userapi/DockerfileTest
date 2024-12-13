@@ -13,4 +13,4 @@ COPY ./userapi/ /project/
 RUN pip install -r requirements-test.txt
 
 
-CMD ["pytest"]
+CMD ["pytest", "-s", "--cov=app"]

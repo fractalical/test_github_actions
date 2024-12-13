@@ -4,18 +4,18 @@ from fastapi import APIRouter, HTTPException, Query
 from sqlmodel import select
 
 from app.db.database import SessionDep
-from app.db.models import User
-
+from app.db.models import User, UserCreate
 
 users_router = APIRouter()
 
 
 @users_router.post("/users/")
-def create_user(user: User, session: SessionDep) -> User:
-    session.add(user)
+def create_user(user: UserCreate, session: SessionDep) -> User:
+    db_user = User.model_validate(user)
+    session.add(db_user)
     session.commit()
-    session.refresh(user)
-    return user
+    session.refresh(db_user)
+    return db_user
 
 
 @users_router.get("/users/")

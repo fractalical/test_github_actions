@@ -3,8 +3,15 @@ from typing import Annotated
 from fastapi import Depends
 from sqlmodel import    Session, SQLModel, create_engine
 
+from app.config import settings
 
-db_url = f"postgresql://postgres:postgres@test-course-postgres:5432/postgres"
+
+db_url = (
+    f"postgresql://"
+    f"{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}@"
+    f"{settings.POSTGRES_HOST}:{settings.POSTGRES_PORT}/"
+    f"{settings.POSTGRES_DB}"
+)
 
 engine = create_engine(db_url)
 

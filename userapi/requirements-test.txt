@@ -1,0 +1,9 @@
+-r requirements.txt
+
+certifi==2024.8.30
+iniconfig==2.0.0
+httpcore==1.0.7
+httpx==0.28.1
+packaging==24.2
+pluggy==1.5.0
+pytest==8.3.4

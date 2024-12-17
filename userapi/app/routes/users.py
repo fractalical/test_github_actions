@@ -3,8 +3,8 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, Query
 from sqlmodel import select
 
-from app.db.database import SessionDep
-from app.db.models import User, UserCreate
+from userapi.app.db.database import SessionDep
+from userapi.app.db.models import User, UserCreate
 
 users_router = APIRouter()
 

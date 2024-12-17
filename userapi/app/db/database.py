@@ -3,7 +3,7 @@ from typing import Annotated
 from fastapi import Depends
 from sqlmodel import    Session, SQLModel, create_engine
 
-from app.config import settings
+from userapi.app.config import settings
 
 
 db_url = (
@@ -13,7 +13,7 @@ db_url = (
     f"{settings.POSTGRES_DB}"
 )
 
-sqlite_file_name = "database.db"
+sqlite_file_name = "userapi/database.db"
 sqlite_url = f"sqlite:///{sqlite_file_name}"
 
 engine = create_engine(sqlite_url)

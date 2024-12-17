@@ -12,9 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Heroku
-        uses: akhileshns/heroku-deploy@v3.13.15 # This is the action
+        uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0 # This is the action
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
-      - run: docker compose -f docker-compose.yaml up --build -d
+          app_name: ${{secrets.HEROKU_APP_NAME}}
+          api_key: ${{secrets.HEROKU_API_KEY}}
+          email: ${{secrets.HEROKU_EMAIL}}
+          heroku_apps: '[{"imagename":"api","appname":"app-test","apptype":"web"},{"imagename":"postgres","appname":"app-test","apptype":"db"}]'
+          docker_compose_file: 'docker-compose.yaml'

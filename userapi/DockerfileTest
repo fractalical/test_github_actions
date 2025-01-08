@@ -9,6 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 COPY ./userapi/ /project/
+COPY requirements-test.txt /project/
 
 RUN pip install -r requirements-test.txt
 

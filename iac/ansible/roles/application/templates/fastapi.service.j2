@@ -1,0 +1,12 @@
+[Unit]
+Description=FastAPI Application
+After=network.target
+
+[Service]
+User=vagrant
+WorkingDirectory=/project
+Environment="PATH=/project/venv/bin"
+ExecStart=/project/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+[Install]
+WantedBy=multi-user.target 

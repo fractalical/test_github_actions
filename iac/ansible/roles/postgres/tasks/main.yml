@@ -1,0 +1,24 @@
+---
+- name: Install PostgreSQL
+  apt:
+    name:
+      - postgresql
+      - postgresql-contrib
+      - python3-psycopg2
+    state: present
+
+- name: Ensure PostgreSQL is running
+  service:
+    name: postgresql
+    state: started
+    enabled: yes
+
+- name: Create PostgreSQL user
+  command: |
+    sudo -u postgres psql -c "CREATE USER {{ lookup('env', 'POSTGRES_USER') | default('postgres', true) }} WITH SUPERUSER CREATEDB PASSWORD '{{ lookup('env', 'POSTGRES_PASSWORD') | default('postgres', true) }}';"
+  ignore_errors: yes  # In case user already exists
+
+- name: Create PostgreSQL database
+  command: |
+    sudo -u postgres createdb -O {{ lookup('env', 'POSTGRES_USER') | default('postgres', true) }} {{ lookup('env', 'POSTGRES_DB') | default('postgres', true) }}
+  ignore_errors: yes  # In case database already exists 

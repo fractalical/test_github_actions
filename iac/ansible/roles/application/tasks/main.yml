@@ -1,0 +1,19 @@
+---
+- name: Install application dependencies
+  pip:
+    requirements: /project/requirements.txt
+    virtualenv: /project/venv
+    virtualenv_command: python3 -m venv
+
+- name: Create systemd service file
+  template:
+    src: fastapi.service.j2
+    dest: /etc/systemd/system/fastapi.service
+  notify: restart fastapi
+
+- name: Ensure application is running
+  systemd:
+    name: fastapi
+    state: started
+    enabled: yes
+    daemon_reload: yes 

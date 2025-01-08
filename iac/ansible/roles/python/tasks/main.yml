@@ -1,0 +1,7 @@
+---
+- name: Install Python packages
+  pip:
+    name:
+      - pip
+      - setuptools
+    state: latest 

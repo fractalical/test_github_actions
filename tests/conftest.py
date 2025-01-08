@@ -14,7 +14,6 @@ def clear_db():
     yield
     drop_db_and_tables()
 
-# Add this fixture for mocking
 @pytest.fixture
 def mocker(pytestconfig):
     """Fixture to provide pytest-mock's mocker"""

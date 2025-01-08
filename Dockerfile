@@ -2,13 +2,13 @@ FROM python:3.12.3
 
 RUN apt update
 
-RUN mkdir -p /project/
+RUN mkdir -p /project/app/
 WORKDIR /project/
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-COPY ./userapi/ /project/
+COPY ./app/ /project/app/
 COPY requirements.txt /project/
 
 RUN pip install -r requirements.txt

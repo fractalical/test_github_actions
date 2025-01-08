@@ -21,6 +21,6 @@ services:
     container_name: test-course-api
     build:
       context: .
-      dockerfile: userapi/DockerfileTest
+      dockerfile: DockerfileTest
     depends_on:
       - postgres

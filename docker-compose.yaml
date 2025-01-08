@@ -25,7 +25,7 @@ services:
     container_name: course-api
     build:
       context: .
-      dockerfile: userapi/Dockerfile
+      dockerfile: Dockerfile
     depends_on:
       - postgres
     ports:

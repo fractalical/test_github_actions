@@ -8,3 +8,5 @@ env/
 venv/
 
 database.db
+.coverage
+.pytest_cache

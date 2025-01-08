@@ -75,5 +75,4 @@ jobs:
         with:
           app-name: 'ahi-devops-project'
           slot-name: 'Production'
-          startup-command: 'uvicorn app.main:app --reload'
           

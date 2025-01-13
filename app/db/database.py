@@ -6,17 +6,18 @@ from sqlmodel import Session, SQLModel, create_engine
 from app.config import settings
 
 
-db_url = (
-    f"postgresql://"
-    f"{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}@"
-    f"{settings.POSTGRES_HOST}:{settings.POSTGRES_PORT}/"
-    f"{settings.POSTGRES_DB}"
-)
+if settings.DATABASE == "postgresql":
+    db_url = (
+        f"postgresql://"
+        f"{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}@"
+        f"{settings.POSTGRES_HOST}:{settings.POSTGRES_PORT}/"
+        f"{settings.POSTGRES_DB}"
+    )
+else:
+    sqlite_file_name = "database.db"
+    db_url = f"sqlite:///{sqlite_file_name}"
 
-sqlite_file_name = "database.db"
-sqlite_url = f"sqlite:///{sqlite_file_name}"
-
-engine = create_engine(sqlite_url)
+engine = create_engine(db_url)
 
 
 def create_db_and_tables():

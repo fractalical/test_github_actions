@@ -5,8 +5,8 @@ RUN apt update
 RUN mkdir -p /project/
 WORKDIR /project/
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 COPY . /project/
 COPY requirements-test.txt /project/

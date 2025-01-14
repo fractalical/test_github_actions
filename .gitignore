@@ -10,3 +10,6 @@ venv/
 database.db
 .coverage
 .pytest_cache
+
+# Istio installation directory
+istio-*/
